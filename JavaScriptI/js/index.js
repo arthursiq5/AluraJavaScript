@@ -23,3 +23,9 @@ for (var i = 0; i < pacientes.length; i++) {
 
   paciente.querySelector(".info-imc").textContent = mensagem;
 }
+
+var titulo = document.querySelector("#titulo");
+
+titulo.addEventListener("click", function(){
+  console.log("clicado");
+});
