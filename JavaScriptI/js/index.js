@@ -7,5 +7,5 @@ let peso = paciente.querySelector(".info-peso").textContent;
 
 let altura = paciente.querySelector(".info-altura").textContent;
 
-console.log(peso);
-console.log(altura);
+
+paciente.querySelector(".info-imc").textContent = peso / (altura * altura);
