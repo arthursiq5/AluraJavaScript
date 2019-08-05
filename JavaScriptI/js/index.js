@@ -1,3 +1,4 @@
+let pacienteInvalidoClass = "paciente-invalido";
 let pacientes = document.querySelectorAll(".paciente");
 
 for (var i = 0; i < pacientes.length; i++) {
@@ -12,10 +13,12 @@ for (var i = 0; i < pacientes.length; i++) {
 
   if( (peso <= 0) || (peso >= 1000) ){
     mensagem = "peso inválido";
+    paciente.classList.add(pacienteInvalidoClass);
   }
 
   if((altura <= 0) || (altura >= 3.00)){
     mensagem = "altura inválida";
+    paciente.classList.add(pacienteInvalidoClass);
   }
 
   paciente.querySelector(".info-imc").textContent = mensagem;
