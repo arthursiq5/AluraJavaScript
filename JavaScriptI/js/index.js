@@ -1,18 +1,22 @@
-var titulo = document.querySelector("#titulo");
-titulo.textContent = "abacate";
+let pacientes = document.querySelectorAll(".paciente");
 
-let paciente = document.querySelector("#primeiro-paciente");
+for (var i = 0; i < pacientes.length; i++) {
 
-let peso = paciente.querySelector(".info-peso").textContent;
+  paciente = pacientes[i];
 
-let altura = paciente.querySelector(".info-altura").textContent;
+  let peso = paciente.querySelector(".info-peso").textContent;
 
-if((peso < 0) || (peso > 1000)){
-  console.log("peso inválido");
+  let altura = paciente.querySelector(".info-altura").textContent;
+
+  let mensagem = (peso / (altura * altura)).toFixed(2);
+
+  if( (peso <= 0) || (peso >= 1000) ){
+    mensagem = "peso inválido";
+  }
+
+  if((altura <= 0) || (altura >= 3.00)){
+    mensagem = "altura inválida";
+  }
+
+  paciente.querySelector(".info-imc").textContent = mensagem;
 }
-
-if((altura < 0) || (altura > 3.00)){
-  console.log("altura inválida");
-}
-
-paciente.querySelector(".info-imc").textContent = peso / (altura * altura);
