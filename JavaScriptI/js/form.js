@@ -7,11 +7,11 @@ botao.addEventListener("click", function(){
   // propriedades do paciente
   let paciente = obtemPacienteDoFormulario(form);
 
-  let erro = validaPaciente(paciente);
+  let erros = validaPaciente(paciente);
 
-  if (erro.length > 0) {
-    let campoErro = document.querySelector("#mensagem-erro");
-    campoErro.textContent = erro;
+  if (erros.length > 0) {
+    exibeMensagensDeErro(erros);
+
     return;
   }
 
@@ -96,4 +96,14 @@ function validaPaciente(paciente) {
     erro.push("Altura não pode ser nula");
 
   return erro;
+}
+
+function exibeMensagensDeErro(erros){
+  let ul = document.querySelector("#mensagens-erro");
+  erros.forEach( function (erro) {
+    let li = document.createElement('li');
+    li.textContent = erro;
+    ul.appendChild(li);
+  });
+  // campoErro.textContent = erro;
 }
