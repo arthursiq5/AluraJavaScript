@@ -9,11 +9,8 @@ botao.addEventListener("click", function(){
 
   let erros = validaPaciente(paciente);
 
-  if (erros.length > 0) {
-    exibeMensagensDeErro(erros);
-
-    return;
-  }
+  exibeMensagensDeErro(erros);
+  if (erros.length > 0) return;
 
   let pacienteTr = montaTr(paciente);
 
@@ -100,6 +97,7 @@ function validaPaciente(paciente) {
 
 function exibeMensagensDeErro(erros){
   let ul = document.querySelector("#mensagens-erro");
+  ul.innerHTML = "";
   erros.forEach( function (erro) {
     let li = document.createElement('li');
     li.textContent = erro;
