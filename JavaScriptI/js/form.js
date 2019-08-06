@@ -7,6 +7,14 @@ botao.addEventListener("click", function(){
   // propriedades do paciente
   let paciente = obtemPacienteDoFormulario(form);
 
+  let erro = validaPaciente(paciente);
+
+  if (erro.length > 0) {
+    let campoErro = document.querySelector("#mensagem-erro");
+    campoErro.textContent = erro;
+    return;
+  }
+
   let pacienteTr = montaTr(paciente);
 
   let tabela = document.querySelector("#tabela-pacientes");
@@ -53,4 +61,39 @@ function montaTd(dado, classe){
   td.classList.add(classe);
 
   return td;
+}
+
+function validaGordura(gordura){
+  return ((gordura >= 0) && (gordura <= 100));
+}
+
+function validaCampoNulo(campo){
+  if ((campo == "") || (campo == null)) {
+    return false;
+  }
+  return true;
+}
+
+function validaPaciente(paciente) {
+  let erro = [];
+
+  if (!validaPeso(paciente.peso))
+    erro.push("Peso inválido");
+
+  if (!validaGordura(paciente.gordura))
+    erro.push("Porcentagem de gordura inválida");
+
+  if (!validaAltura(paciente.altura))
+    erro.push("Altura inválida");
+
+  if (!validaCampoNulo(paciente.nome))
+    erro.push("Nome não pode ser nulo");
+
+  if (!validaCampoNulo(paciente.peso))
+    erro.push("Peso não pode ser nulo");
+
+  if (!validaCampoNulo(paciente.altura))
+    erro.push("Altura não pode ser nula");
+
+  return erro;
 }

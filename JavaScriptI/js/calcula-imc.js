@@ -11,17 +11,25 @@ for (var i = 0; i < pacientes.length; i++) {
 
   let mensagem = calculaImc(peso, altura);
 
-  if( (peso <= 0) || (peso >= 1000) ){
+  if(!validaPeso(peso)){
     mensagem = "peso inválido";
     paciente.classList.add(pacienteInvalidoClass);
   }
 
-  if((altura <= 0) || (altura >= 3.00)){
+  if(!validaAltura(altura)){
     mensagem = "altura inválida";
     paciente.classList.add(pacienteInvalidoClass);
   }
 
   paciente.querySelector(".info-imc").textContent = mensagem;
+}
+
+function validaPeso(peso){
+  return ((peso >= 0) && (peso < 1000));
+}
+
+function validaAltura(altura){
+  return ((altura > 0) && (altura < 3.00));
 }
 
 function calculaImc(peso, altura){
