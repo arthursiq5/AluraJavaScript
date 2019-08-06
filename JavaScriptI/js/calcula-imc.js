@@ -9,7 +9,7 @@ for (var i = 0; i < pacientes.length; i++) {
 
   let altura = paciente.querySelector(".info-altura").textContent;
 
-  let mensagem = (peso / (altura * altura)).toFixed(2);
+  let mensagem = calculaImc(peso, altura);
 
   if( (peso <= 0) || (peso >= 1000) ){
     mensagem = "peso inválido";
@@ -22,4 +22,8 @@ for (var i = 0; i < pacientes.length; i++) {
   }
 
   paciente.querySelector(".info-imc").textContent = mensagem;
+}
+
+function calculaImc(peso, altura){
+  return (peso / (altura * altura)).toFixed(2);
 }
