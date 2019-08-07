@@ -48,11 +48,10 @@ function montaTrPaciente(paciente){
 }
 
 function insereNovoPaciente (paciente){
-  let pacienteTr = montaTrPaciente(paciente);
 
   let tabela = document.querySelector("#tabela-pacientes");
 
-  tabela.appendChild(pacienteTr);
+  tabela.appendChild(montaTrPaciente(paciente));
 }
 
 function montaTd(dado, classe){
@@ -69,10 +68,7 @@ function validaGordura(gordura){
 }
 
 function validaCampoNulo(campo){
-  if ((campo == "") || (campo == null)) {
-    return false;
-  }
-  return true;
+  return (!((campo == "") || (campo == null)));
 }
 
 function validaPaciente(paciente) {
