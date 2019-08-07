@@ -1,27 +1,32 @@
 let pacienteInvalidoClass = "paciente-invalido";
-let pacientes = document.querySelectorAll(".paciente");
 
-for (var i = 0; i < pacientes.length; i++) {
+insereImcCorretoNaTabela(pacienteInvalidoClass)
 
-  paciente = pacientes[i];
+function insereImcCorretoNaTabela(pacienteInvalido){
+  let pacientes = document.querySelectorAll(".paciente");
 
-  let peso = paciente.querySelector(".info-peso").textContent;
+  for (let i = 0; i < pacientes.length; i++) {
 
-  let altura = paciente.querySelector(".info-altura").textContent;
+    paciente = pacientes[i];
 
-  let mensagem = calculaImc(peso, altura);
+    let peso = paciente.querySelector(".info-peso").textContent;
 
-  if(!validaPeso(peso)){
-    mensagem = "peso inválido";
-    paciente.classList.add(pacienteInvalidoClass);
+    let altura = paciente.querySelector(".info-altura").textContent;
+
+    let mensagem = calculaImc(peso, altura);
+
+    if(!validaPeso(peso)){
+      mensagem = "peso inválido";
+      paciente.classList.add(pacienteInvalidoClass);
+    }
+
+    if(!validaAltura(altura)){
+      mensagem = "altura inválida";
+      paciente.classList.add(pacienteInvalidoClass);
+    }
+
+    paciente.querySelector(".info-imc").textContent = mensagem;
   }
-
-  if(!validaAltura(altura)){
-    mensagem = "altura inválida";
-    paciente.classList.add(pacienteInvalidoClass);
-  }
-
-  paciente.querySelector(".info-imc").textContent = mensagem;
 }
 
 function validaPeso(peso){
