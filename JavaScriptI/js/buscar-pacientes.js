@@ -7,9 +7,19 @@ botaoAdicionar.addEventListener('click', function () {
   xhr.open("GET", "https://api-pacientes.herokuapp.com/pacientes");
 
   xhr.addEventListener('load', function(){
-    let pacientes = JSON.parse(this.responseText);
+    let erroAjax = document.querySelector("#erro-ajax");
+    if ( this.status == 200 ){
+      let pacientes = JSON.parse(this.responseText);
 
-    pacientes.forEach(insereNovoPaciente);
+      erroAjax.classList.add('invisivel');
+
+      pacientes.forEach(insereNovoPaciente);
+    }else{
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+
+      erroAjax.classList.remove('invisivel');
+    }
   });
   xhr.send();
 });
