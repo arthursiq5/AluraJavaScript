@@ -144,7 +144,7 @@ button[disabled=disabled], button:disabled {
 	background-color: lightcoral;
 }
 
-#mensagens-erro{
+.erro{
 	font-family: 'Special Elite', sans-serif;
 	font-size: 18px;
 	color: #B22222;
