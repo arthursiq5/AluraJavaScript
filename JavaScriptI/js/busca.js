@@ -1,8 +1,6 @@
 let campoFiltro = document.querySelector("#filtrar-tabela");
 
 campoFiltro.addEventListener("input", function () {
-  console.log(this.value);
-
   let pacientes = document.querySelectorAll(".paciente");
 
   if( this.value.length > 0){
@@ -23,8 +21,9 @@ campoFiltro.addEventListener("input", function () {
 function tornaPacienteNaoPesquisadoInvisivel(paciente, nomePesquisado){
   let tdNome = paciente.querySelector('.info-nome');
   let nome = tdNome.textContent;
+  let expressao = new RegExp(nomePesquisado, "i");
 
-  if (nome != nomePesquisado ){
+  if ( !expressao.test(nome) ){
     paciente.classList.add('invisivel');
     return;
   }
