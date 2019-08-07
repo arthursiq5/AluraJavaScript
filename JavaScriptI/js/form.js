@@ -12,7 +12,7 @@ botao.addEventListener("click", function(){
   exibeMensagensDeErro(erros);
   if (erros.length > 0) return;
 
-  let pacienteTr = montaTr(paciente);
+  let pacienteTr = montaTrPaciente(paciente);
 
   let tabela = document.querySelector("#tabela-pacientes");
 
@@ -37,7 +37,7 @@ function obtemPacienteDoFormulario(form){
   return paciente;
 }
 
-function montaTr(paciente){
+function montaTrPaciente(paciente){
     let pacienteTr = document.createElement('tr');
 
     pacienteTr.classList.add("paciente");
