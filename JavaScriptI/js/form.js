@@ -12,11 +12,7 @@ botao.addEventListener("click", function(){
   exibeMensagensDeErro(erros);
   if (erros.length > 0) return;
 
-  let pacienteTr = montaTrPaciente(paciente);
-
-  let tabela = document.querySelector("#tabela-pacientes");
-
-  tabela.appendChild(pacienteTr);
+  insereNovoPaciente(paciente);
 
   form.reset();
 });
@@ -49,6 +45,14 @@ function montaTrPaciente(paciente){
     pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
 
     return pacienteTr;
+}
+
+function insereNovoPaciente (paciente){
+  let pacienteTr = montaTrPaciente(paciente);
+
+  let tabela = document.querySelector("#tabela-pacientes");
+
+  tabela.appendChild(pacienteTr);
 }
 
 function montaTd(dado, classe){
