@@ -6,12 +6,16 @@ campoFiltro.addEventListener("input", function () {
   let pacientes = document.querySelectorAll(".paciente");
 
   if( this.value.length > 0){
+
     pacientes.forEach( function (paciente) {
+
       tornaPacienteNaoPesquisadoInvisivel(paciente, campoFiltro.value)
+
     });
   }else{
+
     pacientes.forEach( function (paciente) {
-      tornaPacienteVisivel(paciente);
+      paciente.classList.remove('invisivel');
     });
   }
 });
@@ -24,12 +28,6 @@ function tornaPacienteNaoPesquisadoInvisivel(paciente, nomePesquisado){
     paciente.classList.add('invisivel');
     return;
   }
-  paciente.classList.remove('invisivel');
-}
-
-function tornaPacienteVisivel(paciente){
-  let tdNome = paciente.querySelector('.info-nome');
-  let nome = tdNome.textContent;
 
   paciente.classList.remove('invisivel');
 }
