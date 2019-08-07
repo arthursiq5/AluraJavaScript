@@ -72,27 +72,30 @@ function validaCampoNulo(campo){
 }
 
 function validaPaciente(paciente) {
-  let erro = [];
+  let erros = [];
 
   if (!validaPeso(paciente.peso))
-    erro.push("Peso inválido");
+    erros.push("Peso inválido");
 
   if (!validaGordura(paciente.gordura))
-    erro.push("Porcentagem de gordura inválida");
+    erros.push("Porcentagem de gordura inválida");
 
   if (!validaAltura(paciente.altura))
-    erro.push("Altura inválida");
+    erros.push("Altura inválida");
 
   if (!validaCampoNulo(paciente.nome))
-    erro.push("Nome não pode ser nulo");
+    erros.push("Nome não pode ser nulo");
 
   if (!validaCampoNulo(paciente.peso))
-    erro.push("Peso não pode ser nulo");
+    erros.push("Peso não pode ser nulo");
 
   if (!validaCampoNulo(paciente.altura))
-    erro.push("Altura não pode ser nula");
+    erros.push("Altura não pode ser nula");
 
-  return erro;
+  if(!validaCampoNulo(paciente.gordura))
+    erros.push("Gordura não pode ser nula");
+
+  return erros;
 }
 
 function exibeMensagensDeErro(erros){
