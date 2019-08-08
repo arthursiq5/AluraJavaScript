@@ -32,4 +32,9 @@ function eventInsercaoDosDadosNaTabela(event){
   criacaoDosTdLigadosAUmaTr(volume, tr);
 
   tbody.appendChild(tr);
+
+  campos[0].value = "";
+  campos[1].value = 1;
+  campos[2].value = 0;
+  campos[0].focus();
 }
