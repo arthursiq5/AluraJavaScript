@@ -3,30 +3,44 @@ let pacienteInvalidoClass = "paciente-invalido";
 insereImcCorretoNaTabela(pacienteInvalidoClass)
 
 function insereImcCorretoNaTabela(pacienteInvalido){
+
   let pacientes = document.querySelectorAll(".paciente");
 
-  for (let i = 0; i < pacientes.length; i++) {
+  pacientes.forEach( validaEInsereImc );
 
-    paciente = pacientes[i];
+}
 
-    let peso = paciente.querySelector(".info-peso").textContent;
+function validaEInsereImc(paciente){
 
-    let altura = paciente.querySelector(".info-altura").textContent;
+  let peso = paciente.querySelector(".info-peso").textContent;
 
-    let mensagem = calculaImc(peso, altura);
+  let altura = paciente.querySelector(".info-altura").textContent;
 
-    if(!validaPeso(peso)){
-      mensagem = "peso inválido";
-      paciente.classList.add(pacienteInvalidoClass);
-    }
+  let mensagem = validaImc(peso, altura, paciente);
 
-    if(!validaAltura(altura)){
-      mensagem = "altura inválida";
-      paciente.classList.add(pacienteInvalidoClass);
-    }
+  paciente.querySelector(".info-imc").textContent = mensagem;
 
-    paciente.querySelector(".info-imc").textContent = mensagem;
+}
+
+function validaImc(peso, altura, paciente){
+  let mensagem = calculaImc(peso, altura);
+
+  if(!validaPeso(peso)){
+
+    mensagem = "peso inválido";
+    paciente.classList.add(pacienteInvalidoClass);
+
   }
+
+  if(!validaAltura(altura)){
+
+    mensagem = "altura inválida";
+    paciente.classList.add(pacienteInvalidoClass);
+
+  }
+
+  return mensagem;
+
 }
 
 function validaPeso(peso){
