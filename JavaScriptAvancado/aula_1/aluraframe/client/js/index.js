@@ -9,25 +9,27 @@ console.log(campos);
 let tbody = document.querySelector('table tbody');
 
 document.querySelector('.form')
-        .addEventListener('submit', function(event){
+        .addEventListener('submit', eventInsercaoDosDadosNaTabela);
 
-          event.preventDefault();
+function criacaoDosTdLigadosAUmaTr(valor, tr){
+  let td = document.createElement('td');
+  td.textContent = valor;
+  tr.appendChild(td);
+}
 
-          let tr = document.createElement('tr');
+function eventInsercaoDosDadosNaTabela(event){
 
-          campos.forEach( function (campo) {
+  event.preventDefault();
 
-            let td = document.createElement('td');
-            td.textContent = campo.value;
-            tr.appendChild(td);
+  let tr = document.createElement('tr');
 
-          });
-          let tdVolume = document.createElement('td');
+  campos.forEach( function (campo) {
 
-          tdVolume.textContent = campos[1].value * campos[2].value;
+    criacaoDosTdLigadosAUmaTr(campo.value, tr);
 
-          tr.appendChild(tdVolume);
+  });
+  let volume = (campos[1].value * campos[2].value);
+  criacaoDosTdLigadosAUmaTr(volume, tr);
 
-          tbody.appendChild(tr);
-
-        });
+  tbody.appendChild(tr);
+}
