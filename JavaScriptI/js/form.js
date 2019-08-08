@@ -99,7 +99,7 @@ function validaPaciente(paciente) {
 }
 
 function exibeMensagensDeErro(erros){
-  let ul = document.querySelector("#mensagens-erro");
+  let ul = document.querySelector("ul.erro");
   ul.innerHTML = "";
   erros.forEach( function (erro) {
     let li = document.createElement('li');
