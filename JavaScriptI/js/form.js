@@ -64,11 +64,11 @@ function montaTd(dado, classe){
 }
 
 function validaGordura(gordura){
-  return ((gordura >= 0) && (gordura <= 100));
+  return ((gordura >= GORDURA_MINIMA) && (gordura <= GORDURA_MAXIMA));
 }
 
 function validaCampoNulo(campo){
-  return (!((campo == "") || (campo == null)));
+  return (!((campo == "") || (campo == null) || (campo.length == 0)));
 }
 
 function validaPaciente(paciente) {

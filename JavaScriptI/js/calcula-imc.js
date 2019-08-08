@@ -44,11 +44,11 @@ function validaImc(peso, altura, paciente){
 }
 
 function validaPeso(peso){
-  return ((peso >= 0) && (peso < 1000));
+  return ((peso >= PESO_MINIMO) && (peso < PESO_MAXIMO));
 }
 
 function validaAltura(altura){
-  return ((altura > 0) && (altura < 3.00));
+  return ((altura > ALTURA_MINIMA) && (altura < ALTURA_MAXIMA));
 }
 
 function calculaImc(peso, altura){

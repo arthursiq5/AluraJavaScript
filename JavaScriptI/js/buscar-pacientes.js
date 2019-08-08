@@ -6,14 +6,14 @@ botaoAdicionar.addEventListener('click', function () {
 
   xhr.open(
            "GET",
-           "https://api-pacientes.herokuapp.com/pacientes"
+           URL_DADOS_EXTERNOS
           );
 
   xhr.addEventListener('load', function(){
 
     let erroAjax = document.querySelector("#erro-ajax");
 
-    if ( this.status == 200 ){
+    if ( this.status == STATUS_HTTP_SUCCESS ){
 
       let pacientes = JSON.parse( this.responseText );
       pacientes.forEach( insereNovoPaciente );
