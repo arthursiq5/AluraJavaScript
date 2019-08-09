@@ -60,14 +60,16 @@
     </table>
     <script type="text/javascript" src="./js/app/models/Negociacao.js"></script>
     <script type="text/javascript">
-      let n1 = new Negociacao(new Date(), 5, 700);
-      // Object.freeze(n1);
-      n1._valor = 1;
+      let hoje = new Date();
+      let n1 = new Negociacao(hoje, 5, 700);
+
       console.log(n1);
-      let amanha = new Date();
-      // amanha.setDate(11);
-      n1.data.setDate(11);
-      console.log(n1);
+
+      hoje.setDate(11);
+
+      let clone = n1.clone();
+
+      console.log(clone);
     </script>
     <noscript>
       Aviso: o navegador não está exibindo JavaScript
