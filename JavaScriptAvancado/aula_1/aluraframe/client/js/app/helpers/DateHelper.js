@@ -4,17 +4,26 @@
  */
 class DateHelper{
   /**
+   * @throws Error DateHelper não pode ser instanciado
+   * @constructs
+   */
+  constructor(){
+    throw new Error("DateHelper não pode ser instanciado");
+  }
+
+  /**
    * @param string texto
    * @return Date data
    */
-  textoParaData(texto){
+  static textoParaData(texto){
     return new Date(...(texto.split('-').map((item, indice) => item - indice % 2)));
   }
+
   /**
    * @param Date data
    * @return string data
    */
-  dataParaTexto(data){
+  static dataParaTexto(data){
     return   data.getDate()
     + '/' + (data.getMonth() + 1)
     + '/' + data.getFullYear();
