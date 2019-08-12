@@ -5,7 +5,7 @@ class NegociacaoFactory{
     this.valor = 0.0;
   }
 
-  buildNegociacao(){
+  get negociacao(){
     return new Negociacao(
                  this.data,
                  this.quantidade,

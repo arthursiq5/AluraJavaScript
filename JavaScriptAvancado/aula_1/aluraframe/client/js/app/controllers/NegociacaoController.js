@@ -39,7 +39,7 @@ class NegociacaoController{
     negociacaoFactory.valor      = this._inputValor.value;
     negociacaoFactory.quantidade = this._inputQuantidade.value;
 
-    return negociacaoFactory.buildNegociacao();
+    return negociacaoFactory.negociacao;
   }
 
   /**
