@@ -17,7 +17,7 @@ class ExpressaoRegularHelper{
    * @return boolean resultado
    */
   static validaData(data){
-    let expressao = /\d{4}-\d{2}-\d{2}/;
+    let expressao = /^\d{4}-\d{2}-\d{2}$/;
     return expressao.test(data);
   }
 }
