@@ -37,9 +37,10 @@ class NegociacoesView{
                  <tfoot>
                   <td colspan="3"></td>
                   <td>
-                    ${ model.negociacoes.reduce(function(total, negociacao){
-                      return total + negociacao.volume
-                    }, 0.0) }
+                    ${model.negociacoes.reduce(
+                        (total, negociacao) => total + negociacao.volume,
+                        0.0)
+                      }
                   </td>
                  </tfoot>
              </table>
