@@ -9,6 +9,5 @@ class Mensagem{
 
   set texto(texto){
     this._texto = texto;
-    return this;
   }
 }
