@@ -31,13 +31,17 @@ class NegociacaoController{
    * @param event
    */
   adiciona(event){
-    event.preventDefault();
+    try{
+      event.preventDefault();
 
-    this._listaNegociacoes.adiciona(this._criaNegociacao());
+      this._listaNegociacoes.adiciona(this._criaNegociacao());
 
-    this._mensagem.texto = "Negociação adicionada com sucesso";
+      this._mensagem.texto = "Negociação adicionada com sucesso";
 
-    this._limpaFormulario();
+      this._limpaFormulario();
+    }catch(exception){
+      this._mensagem.texto = exception;
+    }
 
     return this;
   }

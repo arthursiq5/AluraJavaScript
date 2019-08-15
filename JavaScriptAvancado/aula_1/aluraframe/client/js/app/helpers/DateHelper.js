@@ -16,9 +16,9 @@ class DateHelper{
    * @return Date data
    */
   static textoParaData(texto){
-    if(!ExpressaoRegularHelper.validaData(texto))
-      throw new Error(`Deve estar no formato aaaa-mm-dd`);
-    return new Date(...(texto.split('-').map((item, indice) => item - indice % 2)));
+    if(!/\d{2}\/\d{2}\/\d{4}/.test(texto))
+      throw new Error(`Deve estar no formato dd/mm/aaaa`);
+    return new Date(...(texto.split('/').map((item, indice) => item - indice % 2).reverse()));
   }
 
   /**
