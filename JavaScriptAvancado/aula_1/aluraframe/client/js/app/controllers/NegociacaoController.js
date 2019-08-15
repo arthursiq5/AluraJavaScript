@@ -20,11 +20,11 @@ class NegociacaoController{
                                'adiciona', 'esvazia'
                              );
 
-    this._mensagem         = new Bind(
-                               new Mensagem(),
-                               new MensagemView($("#mensagemView")),
-                               'texto'
-                             );
+    this._mensagem = new Bind(
+                      new Mensagem(),
+                      new MensagemView($("#mensagemView")),
+                      'texto'
+                     );
   }
 
   /**
