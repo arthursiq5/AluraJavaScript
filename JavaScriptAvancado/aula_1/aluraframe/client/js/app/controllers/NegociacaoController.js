@@ -51,44 +51,84 @@ class NegociacaoController{
   importaNegociacoes(){
     let service = new NegociacaoService();
 
-    service.obterNegociacoesDaSemana((err, negociacoes) => {
+    let promise = service.obterNegociacoesDaSemana();
 
-      if(err){
-        this._mensagem.texto = err;
-        return;
-      }
+    promise.then(negociacoes => {
 
-      negociacoes.forEach(
-        negociacao => this._listaNegociacoes.adiciona(negociacao)
-      );
-      this._mensagem.texto = 'Negociações importadas com sucesso';
+                  negociacoes.forEach(negociacao => {
+                    this._listaNegociacoes.adiciona(negociacao);
+                  });
+                    this._mensagem.texto = 'Negociações da semana importadas com sucesso';
+                })
 
-      service.obterNegociacoesDaSemanaAnterior((err, negociacoes) => {
+       .catch(erro => {
+         this._mensagem.texto = erro;
+       });
 
-        if(err){
-          this._mensagem.texto = err;
-          return;
-        }
+    promise = service.obterNegociacoesDaSemanaAnterior();
 
-        negociacoes.forEach(
-          negociacao => this._listaNegociacoes.adiciona(negociacao)
-        );
-        this._mensagem.texto = 'Negociações importadas com sucesso';
+    promise.then(negociacoes => {
 
-        service.obterNegociacoesDaSemanaRetrasada((err, negociacoes) => {
+                 negociacoes.forEach(negociacao => {
+                   this._listaNegociacoes.adiciona(negociacao);
+                 });
+                   this._mensagem.texto = 'Negociações da semana importadas com sucesso';
+               })
 
-          if(err){
-            this._mensagem.texto = err;
-            return;
-          }
-
-          negociacoes.forEach(
-            negociacao => this._listaNegociacoes.adiciona(negociacao)
-          );
-          this._mensagem.texto = 'Negociações importadas com sucesso';
-        });
+      .catch(erro => {
+        this._mensagem.texto = erro;
       });
-    });
+
+    promise = service.obterNegociacoesDaSemanaRetrasada();
+
+    promise.then(negociacoes => {
+                negociacoes.forEach(negociacao => {
+                  this._listaNegociacoes.adiciona(negociacao);
+                });
+                  this._mensagem.texto = 'Negociações da semana importadas com sucesso';
+                })
+                .catch(erro => {
+                  this._mensagem.texto = erro;
+                });
+
+    // service.obterNegociacoesDaSemana((err, negociacoes) => {
+    //
+    //   if(err){
+    //     this._mensagem.texto = err;
+    //     return;
+    //   }
+    //
+    //   negociacoes.forEach(
+    //     negociacao => this._listaNegociacoes.adiciona(negociacao)
+    //   );
+    //   this._mensagem.texto = 'Negociações importadas com sucesso';
+    //
+    //   service.obterNegociacoesDaSemanaAnterior((err, negociacoes) => {
+    //
+    //     if(err){
+    //       this._mensagem.texto = err;
+    //       return;
+    //     }
+    //
+    //     negociacoes.forEach(
+    //       negociacao => this._listaNegociacoes.adiciona(negociacao)
+    //     );
+    //     this._mensagem.texto = 'Negociações importadas com sucesso';
+    //
+    //     service.obterNegociacoesDaSemanaRetrasada((err, negociacoes) => {
+    //
+    //       if(err){
+    //         this._mensagem.texto = err;
+    //         return;
+    //       }
+    //
+    //       negociacoes.forEach(
+    //         negociacao => this._listaNegociacoes.adiciona(negociacao)
+    //       );
+    //       this._mensagem.texto = 'Negociações importadas com sucesso';
+    //     });
+    //   });
+    // });
   }
 
   /**
