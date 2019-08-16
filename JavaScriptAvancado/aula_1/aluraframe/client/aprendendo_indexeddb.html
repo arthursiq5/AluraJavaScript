@@ -6,19 +6,22 @@
   </head>
   <body>
     <script type="text/javascript" src="./js/app/models/Negociacao.js"></script>
+    <script type="text/javascript" src="./js/app/services/ConnectionFactory.js"></script>
     <script type="text/javascript">
       var connection;
 
-      var openRequest = window.indexedDB.open('aluraframe', 1);
+      var openRequest = window.indexedDB.open(dbName, version);
 
       openRequest.onupgradeneeded = evento =>{
           connection = evento.target.result;
           console.log('cria ou altera um banco já existente');
 
-          if(connection.objectStoreNames.contains('negociacoes')){
-            connection.deleteObjectStore('negociacoes');
-          }
-          connection.createObjectStore('negociacoes', { autoIncrement: true });
+          stores.forEach((store) => {
+            if(connection.objectStoreNames.contains(store)){
+              connection.deleteObjectStore(store);
+            }
+            connection.createObjectStore(store, { autoIncrement: true });
+          });
         }
       openRequest.onsuccess = evento => {
         console.log('conexão obtida com sucesso');
@@ -32,7 +35,7 @@
 
       function adiciona() {
 
-        let transaction = connection.transaction(['negociacoes'],'readwrite');
+        let transaction = connection.transaction(stores,'readwrite');
 
         let store = transaction.objectStore('negociacoes');
 
@@ -81,6 +84,18 @@
           console.log('erro');
         };
       }
+
+      ConnectionFactory
+        .getConnection()
+        .then(connection => {
+
+        });
+
+      ConnectionFactory
+        .getConnection()
+        .then(connection => {
+
+        });
     </script>
   </body>
 </html>
