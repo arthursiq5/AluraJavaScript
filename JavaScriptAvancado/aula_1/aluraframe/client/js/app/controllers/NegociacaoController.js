@@ -31,14 +31,28 @@ class NegociacaoController{
    * @param event
    */
   adiciona(event){
+    event.preventDefault();
+
+    ConnectionFactory.getConnection()
+                     .then(connection => {
+
+                       let negociacao = this._criaNegociacao();
+
+                       new NegociacaoDao(connection)
+                         .adiciona(negociacao)
+                         .then(() => {
+                            this._listaNegociacoes.adiciona(this._criaNegociacao());
+
+                            this._mensagem.texto = "Negociação adicionada com sucesso";
+
+                            this._limpaFormulario();
+                         });
+                     })
+                     .catch(erro => this._mensagem.texto = erro);
+
+
     try{
-      event.preventDefault();
 
-      this._listaNegociacoes.adiciona(this._criaNegociacao());
-
-      this._mensagem.texto = "Negociação adicionada com sucesso";
-
-      this._limpaFormulario();
     }catch(exception){
       this._mensagem.texto = exception;
     }
@@ -83,8 +97,8 @@ class NegociacaoController{
     let negociacaoFactory = new NegociacaoFactory();
 
     negociacaoFactory.data       = DateHelper.textoParaData(this._inputData.value);
-    negociacaoFactory.valor      = this._inputValor.value;
-    negociacaoFactory.quantidade = this._inputQuantidade.value;
+    negociacaoFactory.valor      = parseInt(this._inputValor.value);
+    negociacaoFactory.quantidade = parseFloat(this._inputQuantidade.value);
 
     return negociacaoFactory.negociacao;
   }
