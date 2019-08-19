@@ -25,6 +25,10 @@ class NegociacaoController{
                       new MensagemView($("#mensagemView")),
                       'texto'
                      );
+    this._init();
+  }
+
+  _init(){
     ConnectionFactory
       .getConnection()
       .then(connection => new NegociacaoDao(connection))
@@ -37,6 +41,9 @@ class NegociacaoController{
         console.log(evento.target.error);
         this._mensagem.texto = "Não foi possível listar as negociações";
       });
+    setInterval(() => {
+      this.importaNegociacoes();
+    }, 3000);
   }
 
   /**
