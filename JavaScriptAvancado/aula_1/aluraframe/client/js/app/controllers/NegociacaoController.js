@@ -90,25 +90,15 @@ class NegociacaoController{
 
   importaNegociacoes(){
     let service = new NegociacaoService();
-
-    Promise.all([
-      service.obterNegociacoesDaSemana(),
-      service.obterNegociacoesDaSemanaAnterior(),
-      service.obterNegociacoesDaSemanaRetrasada()
-    ])
-      .then(negociacoes => {
-        negociacoes
-          .reduce((arrayAchatado, array) => arrayAchatado.concat(array), [])
-          .forEach(negociacao => {
+    service
+        .obterNegociacoes()
+        .then(negociacoes => negociacoes.forEach(negociacao => {
             this._listaNegociacoes.adiciona(negociacao);
-          });
-        this._mensagem.texto = 'Negociações da semana importadas com sucesso';
-      })
+            this._mensagem.texto = 'Negociações do período importadas'
+        }))
+        .catch(erro => this._mensagem.texto = erro);  
 
-      .catch(erro => {
-        this._mensagem.texto = erro;
-      }
-    );
+    return this;
   }
 
   /**
