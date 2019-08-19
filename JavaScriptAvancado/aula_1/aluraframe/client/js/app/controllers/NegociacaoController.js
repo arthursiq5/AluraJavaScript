@@ -25,6 +25,18 @@ class NegociacaoController{
                       new MensagemView($("#mensagemView")),
                       'texto'
                      );
+    ConnectionFactory
+      .getConnection()
+      .then(connection => new NegociacaoDao(connection))
+      .then(negociacaoDao => negociacaoDao.listaTodos())
+      .then(negociacoes => {
+             negociacoes.forEach(negociacao =>
+               this._listaNegociacoes.adiciona(negociacao));
+           })
+      .catch(evento => {
+        console.log(evento.target.error);
+        this._mensagem.texto = "Não foi possível listar as negociações";
+      });
   }
 
   /**
@@ -61,9 +73,19 @@ class NegociacaoController{
   }
 
   apaga(){
-    this._listaNegociacoes.esvazia();
+    ConnectionFactory
+      .getConnection()
+      .then(connection => new NegociacaoDao(connection))
+      .then(negociacaoDao => negociacaoDao.apagaTodos())
+      .then(mensagem => {
+        this._mensagem.texto = mensagem;
+        this._listaNegociacoes.esvazia();
+      })
+      .catch(evento => {
+        this._mensagem.texto = "Não foi possível remover as negociações";
+        console.log(evento.target.error);
 
-    this._mensagem.texto = "Negociações apagadas com sucesso";
+      });
   }
 
   importaNegociacoes(){
