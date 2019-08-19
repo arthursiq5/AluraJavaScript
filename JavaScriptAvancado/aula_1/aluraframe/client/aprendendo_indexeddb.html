@@ -6,9 +6,85 @@
   </head>
   <body>
     <script type="text/javascript" src="./js/app/models/Negociacao.js"></script>
+    <script type="text/javascript" src="./js/app/dao/NegociacaoDao.js"></script>
     <script type="text/javascript" src="./js/app/services/ConnectionFactory.js"></script>
     <script type="text/javascript">
-      
+      // var testConnection;
+      //
+      // var openRequest = window.indexedDB.open('aluraframe', 1);
+      //
+      // openRequest.onupgradeneeded = evento =>{
+      //     testConnection = evento.target.result;
+      //     console.log('cria ou altera um banco já existente');
+      //
+      //     stores.forEach((store) => {
+      //       if(testConnection.objectStoreNames.contains(store)){
+      //         testConnection.deleteObjectStore(store);
+      //       }
+      //       testConnection.createObjectStore(store, { autoIncrement: true });
+      //     });
+      //   }
+      // openRequest.onsuccess = evento => {
+      //   console.log('conexão obtida com sucesso');
+      //
+      //   testConnection = evento.target.result;
+      //
+      // };
+      //
+      // openRequest.onerror = evento =>
+      //   console.log(evento.target.error);
+      //
+      // function adiciona() {
+      //
+      //   let transaction = testConnection.transaction(stores,'readwrite');
+      //
+      //   let store = transaction.objectStore('negociacoes');
+      //
+      //   let negociacao = new Negociacao(new Date(), 200, 1);
+      //
+      //   let request = store.add(negociacao);
+      //
+      //   request.onsuccess = evento => {
+      //     console.log("Negociação incluída com sucesso");
+      //   }
+      //
+      //   request.onerror = evento => {
+      //     console.log("Não foi possível incluir a Negociação");
+      //   }
+      //
+      // }
+      //
+      // function listaTodos(){
+      //   let transation = testConnection.transaction(['negociacoes'], 'readwrite');
+      //
+      //   let store = transation.objectStore('negociacoes');
+      //
+      //   let negociacoes = [];
+      //
+      //   let cursor = store.openCursor();
+      //
+      //   cursor.onsuccess = evento => {
+      //     let atual = evento.target.result;
+      //
+      //     if(atual){
+      //
+      //       let dado = atual.value;
+      //
+      //       negociacoes.push(new Negociacao(dado._data, dado._quantidade, dado._valor));
+      //
+      //       atual.continue();
+      //
+      //     }else{
+      //
+      //       console.log(negociacoes);
+      //
+      //     }
+      //   };
+      //
+      //   cursor.onerror = evento => {
+      //     console.log('erro');
+      //   };
+      // }
     </script>
   </body>
 </html>
