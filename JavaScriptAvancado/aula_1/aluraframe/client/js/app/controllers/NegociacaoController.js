@@ -69,13 +69,6 @@ class NegociacaoController{
                      })
                      .catch(erro => this._mensagem.texto = erro);
 
-
-    try{
-
-    }catch(exception){
-      this._mensagem.texto = exception;
-    }
-
     return this;
   }
 
