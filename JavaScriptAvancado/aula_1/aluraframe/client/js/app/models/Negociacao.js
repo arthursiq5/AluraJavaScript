@@ -58,4 +58,18 @@ class Negociacao{
   clone(){
     return Object.assign(this);
   }
+
+  /**
+   * @access public
+   * @description compara o objeto atual com o passado como parâmetro
+   * @param Negociacao negociacao
+   * @param Boolean=true compararData
+   * @return Boolean
+   */
+  isEquals(negociacao, compararData=true){
+    if(compararData)
+      return JSON.stringify(this) == JSON.stringify(negociacao);
+    return this.quantidade == negociacao.quantidade
+        && this.valor      == negociacao.valor;
+  }
 }
