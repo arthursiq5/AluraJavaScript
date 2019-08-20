@@ -25,19 +25,20 @@ class NegociacaoController{
                       new MensagemView($("#mensagemView")),
                       'texto'
                      );
+    this._negociacaoService = new NegociacaoService();
     this._init();
   }
 
   _init(){
-    new NegociacaoService()
-      .lista()
-      .then(negociacoes =>
-             negociacoes.forEach(negociacao =>
-               this._listaNegociacoes.adiciona(negociacao)))
-      .catch(erro => {
-        console.log(erro);
-        this._mensagem.texto = erro;
-      });
+    this._negociacaoService
+        .lista()
+        .then(negociacoes =>
+               negociacoes.forEach(negociacao =>
+                 this._listaNegociacoes.adiciona(negociacao)))
+        .catch(erro => {
+          console.log(erro);
+          this._mensagem.texto = erro;
+        });
     setInterval(() => {
       this.importaNegociacoes();
     }, 3000);
@@ -50,34 +51,33 @@ class NegociacaoController{
     event.preventDefault();
 
     let negociacao = this._criaNegociacao();
-    new NegociacaoService()
-      .cadastra(negociacao)
-      .then((mensagem) => {
-        this._listaNegociacoes.adiciona(negociacao);
-        this._mensagem.texto = mensagem;
-      })
-      .catch(erro => this._mensagem.texto = erro);
+    this._negociacaoService
+        .cadastra(negociacao)
+        .then((mensagem) => {
+          this._listaNegociacoes.adiciona(negociacao);
+          this._mensagem.texto = mensagem;
+        })
+        .catch(erro => this._mensagem.texto = erro);
 
     return this;
   }
 
   apaga(){
-    new NegociacaoController()
-      .apaga()
-      .then(mensagem => {
-        this._mensagem.texto = mensagem;
-        this._listaNegociacoes.esvazia();
-      })
-      .catch(evento => {
-        this._mensagem.texto = "Não foi possível remover as negociações";
-        console.log(evento.target.error);
-      });
+    this._negociacaoService
+        .apaga()
+        .then(mensagem => {
+          this._mensagem.texto = mensagem;
+          this._listaNegociacoes.esvazia();
+        })
+        .catch(evento => {
+          this._mensagem.texto = "Não foi possível remover as negociações";
+          console.log(evento.target.error);
+        });
     return this;
   }
 
   importaNegociacoes(){
-    let service = new NegociacaoService();
-    service
+    this._negociacaoService
         .obterNegociacoes()
         .then(negociacoes =>
           negociacoes.filter(negociacao =>
