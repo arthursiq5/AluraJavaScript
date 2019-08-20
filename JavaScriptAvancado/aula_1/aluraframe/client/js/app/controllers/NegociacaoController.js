@@ -29,17 +29,14 @@ class NegociacaoController{
   }
 
   _init(){
-    ConnectionFactory
-      .getConnection()
-      .then(connection => new NegociacaoDao(connection))
-      .then(negociacaoDao => negociacaoDao.listaTodos())
-      .then(negociacoes => {
+    new NegociacaoService()
+      .lista()
+      .then(negociacoes =>
              negociacoes.forEach(negociacao =>
-               this._listaNegociacoes.adiciona(negociacao));
-           })
-      .catch(evento => {
-        console.log(evento.target.error);
-        this._mensagem.texto = "Não foi possível listar as negociações";
+               this._listaNegociacoes.adiciona(negociacao)))
+      .catch(erro => {
+        console.log(erro);
+        this._mensagem.texto = erro;
       });
     setInterval(() => {
       this.importaNegociacoes();
@@ -65,10 +62,8 @@ class NegociacaoController{
   }
 
   apaga(){
-    ConnectionFactory
-      .getConnection()
-      .then(connection => new NegociacaoDao(connection))
-      .then(negociacaoDao => negociacaoDao.apagaTodos())
+    new NegociacaoController()
+      .apaga()
       .then(mensagem => {
         this._mensagem.texto = mensagem;
         this._listaNegociacoes.esvazia();
@@ -76,8 +71,8 @@ class NegociacaoController{
       .catch(evento => {
         this._mensagem.texto = "Não foi possível remover as negociações";
         console.log(evento.target.error);
-
       });
+    return this;
   }
 
   importaNegociacoes(){
