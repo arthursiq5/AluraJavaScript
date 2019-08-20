@@ -1,0 +1,3 @@
+[submodule "JavaScriptAvancado/aula_1/aluraframe/client/js/app/polyfill/fetch"]
+	path = JavaScriptAvancado/aula_1/aluraframe/client/js/app/polyfill/fetch
+	url = https://github.com/github/fetch.git
