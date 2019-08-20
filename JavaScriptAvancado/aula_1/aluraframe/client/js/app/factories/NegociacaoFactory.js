@@ -13,6 +13,7 @@ class NegociacaoFactory{
   }
 
   /**
+   * @access public
    * @return Negociacao negociacao
    */
   get negociacao(){

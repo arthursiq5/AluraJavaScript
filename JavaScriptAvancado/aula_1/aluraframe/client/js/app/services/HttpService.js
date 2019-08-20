@@ -1,5 +1,13 @@
+/**
+ * @namespace app/services/HttpService
+ */
 class HttpService{
 
+  /**
+   * @access public
+   * @param string url
+   * @return Promise
+   */
   get(url){
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest();
@@ -24,6 +32,12 @@ class HttpService{
     });
   }
 
+  /**
+   * @access public
+   * @param string url
+   * @param dado
+   * @return Promise
+   */
   post(url, dado) {
         return new Promise((resolve, reject) => {
 

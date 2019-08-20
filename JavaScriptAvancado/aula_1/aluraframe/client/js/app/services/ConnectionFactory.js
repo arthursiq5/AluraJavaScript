@@ -1,5 +1,6 @@
-
-
+/**
+ * @namespace app/services/ConnectionFactory
+ */
 var ConnectionFactory = (function (){
   const stores = ['negociacoes'];
   const version = 1;
@@ -9,10 +10,21 @@ var ConnectionFactory = (function (){
 
   return class ConnectionFactory{
 
+    /**
+     * @constructs
+     * @description Construtor não instanciável
+     * @throws Error impossível criar instâncias de ConnectionFactory
+     */
     constructor(){
       throw new Error('Não é possível criar instâncias de ConnectionFactory');
     }
 
+    /**
+     * @access public
+     * @static
+     * @description abre conexão
+     * @return Promise
+     */
     static getConnection(){
       return new Promise( (resolve, reject) => {
         let openRequest = window.indexedDB.open(dbName, version);
@@ -39,6 +51,11 @@ var ConnectionFactory = (function (){
       });
     }
 
+    /**
+     * @access public
+     * @static
+     * @description fecha conexão
+     */
     static closeConnection(){
       if(connection){
         close();

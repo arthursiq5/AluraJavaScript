@@ -1,11 +1,23 @@
+/**
+ * @namespace app/dao/NegociacaoDao
+ */
 class NegociacaoDao{
 
+  /**
+   * @constructs
+   * @param Connection connection
+   */
   constructor(connection){
-
     this._connection = connection;
     this._store = 'negociacoes';
   }
 
+  /**
+   * @access public
+   * @description salva uma negociação no banco
+   * @param Negociacao negociacao
+   * @return promise
+   */
   adiciona(negociacao){
     return new Promise((resolve, reject) => {
 
@@ -24,6 +36,11 @@ class NegociacaoDao{
     });
   }
 
+  /**
+   * @access public
+   * @description mostra as negociações do banco
+   * @return promise
+   */
   listaTodos(){
     return new Promise((resolve, reject) => {
       let cursor = this._connection
@@ -57,7 +74,11 @@ class NegociacaoDao{
 
     });
   }
-
+  /**
+   * @access public
+   * @description apaga todas as negociações
+   * @return Promise
+   */
   apagaTodos(){
     return new Promise((resolve, reject) => {
       let request = this._connection

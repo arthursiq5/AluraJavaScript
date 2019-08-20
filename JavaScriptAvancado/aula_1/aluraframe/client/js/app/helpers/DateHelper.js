@@ -12,6 +12,7 @@ class DateHelper{
   }
 
   /**
+   * @access public
    * @param string texto
    * @return Date data
    */
@@ -22,6 +23,7 @@ class DateHelper{
   }
 
   /**
+   * @access public
    * @param Date data
    * @return string data
    */

@@ -1,10 +1,21 @@
+/**
+ * @namespace app/services/NegociacaoService
+ */
 class NegociacaoService {
 
+    /**
+     * @constructs
+     */
     constructor() {
 
         this._http = new HttpService();
     }
 
+    /**
+     * @access private
+     * @param Array negociacoes
+     * @return Array negociacoes
+     */
     _formataArrayDeNegociacoes(negociacoes){
       return negociacoes.map(
         objeto =>
@@ -16,8 +27,12 @@ class NegociacaoService {
         );
     }
 
+    /**
+     * @access public
+     * @throws Error erro ao tentar recuperar negociações
+     * @return Promise negociacoesDaSemana
+     */
     obterNegociacoesDaSemana() {
-
         return this._http
             .get('negociacoes/semana')
             .then(negociacoes => {
@@ -29,8 +44,12 @@ class NegociacaoService {
             });
     }
 
+    /**
+     * @access public
+     * @throws Error erro ao tentar recuperar negociações
+     * @return Promise negociacoesDaSemanaAnterior
+     */
     obterNegociacoesDaSemanaAnterior() {
-
         return this._http
             .get('negociacoes/anterior')
             .then(negociacoes => {
@@ -42,6 +61,11 @@ class NegociacaoService {
             });
     }
 
+    /**
+     * @access public
+     * @throws Error erro ao tentar recuperar negociações
+     * @return Promise negociacoesDaSemanaRetrasada
+     */
     obterNegociacoesDaSemanaRetrasada() {
 
         return this._http
@@ -56,6 +80,10 @@ class NegociacaoService {
 
     }
 
+    /**
+     * @access public
+     * @return Promise
+     */
     obterNegociacoes() {
 
         return Promise.all([
@@ -74,6 +102,12 @@ class NegociacaoService {
         });
 	}
 
+  /**
+   * @access public
+   * @param Negociacao negociacao
+   * @throws Error impossível adicionar negociação
+   * @return Promise
+   */
   cadastra(negociacao){
     return ConnectionFactory
              .getConnection()
@@ -85,6 +119,11 @@ class NegociacaoService {
              })
   }
 
+  /**
+   * @access public
+   * @throws Error erro ao listar negociações
+   * @return Promise
+   */
   lista(){
     return ConnectionFactory
              .getConnection()
@@ -96,6 +135,11 @@ class NegociacaoService {
              })
   }
 
+  /**
+   * @access public
+   * @throws Error erro ao apagar negociações
+   * @return Promise
+   */
   apaga(){
     return ConnectionFactory
              .getConnection()
@@ -108,6 +152,12 @@ class NegociacaoService {
              });
   }
 
+  /**
+   * @access public
+   * @param Array listaAtual
+   * @throws Error erro ao importar negociações
+   * @return Promise
+   */
   importa(listaAtual){
     return this.obterNegociacoes()
                .then(negociacoes =>

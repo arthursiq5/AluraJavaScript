@@ -19,6 +19,7 @@ class Negociacao{
   }
 
   /**
+   * @access public
    * @return float valor
    */
   get volume(){
@@ -26,6 +27,7 @@ class Negociacao{
   }
 
   /**
+   * @access public
    * @return Date data
    */
   get data(){
@@ -33,6 +35,7 @@ class Negociacao{
   }
 
   /**
+   * @access public
    * @return int quantidade
    */
   get quantidade(){
@@ -40,6 +43,7 @@ class Negociacao{
   }
 
   /**
+   * @access public
    * @return float valor
    */
   get valor(){
@@ -47,6 +51,7 @@ class Negociacao{
   }
 
   /**
+   * @access public
    * @description clona o objeto atual
    * @return app/models/Negociacao
    */

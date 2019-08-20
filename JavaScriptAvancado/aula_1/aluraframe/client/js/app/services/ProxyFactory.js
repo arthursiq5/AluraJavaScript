@@ -1,5 +1,16 @@
+/**
+ * @namespace app/services/ProxyFactory
+ */
 class ProxyFactory{
 
+  /**
+   * @access public
+   * @static
+   * @param objeto
+   * @param props
+   * @param acao
+   * @return Proxy
+   */
   static create(objeto, props, acao){
     return new Proxy(objeto, {
 

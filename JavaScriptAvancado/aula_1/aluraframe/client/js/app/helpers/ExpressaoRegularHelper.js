@@ -13,6 +13,8 @@ class ExpressaoRegularHelper{
   }
 
   /**
+   * @access public
+   * @description valida expressão regular
    * @param string data
    * @return boolean resultado
    */

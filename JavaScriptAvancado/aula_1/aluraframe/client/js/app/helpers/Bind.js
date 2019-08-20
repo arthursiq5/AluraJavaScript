@@ -1,5 +1,15 @@
+/**
+ * @namespace app/helpers/Bind
+ */
 class Bind{
 
+  /**
+   * @constructs
+   * @description transforma o modelo passado em um proxy para o objeto
+   * @param model model
+   * @param View view
+   * @param ...props
+   */
   constructor(model, view, ...props){
     let proxy = ProxyFactory.create(
       model,

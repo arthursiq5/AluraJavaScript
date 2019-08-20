@@ -1,9 +1,22 @@
+/**
+ * @namespace app/view/NegociacoesView
+ */
 class NegociacoesView extends View{
 
+  /**
+   * @constructs
+   * @param elemento
+   */
   constructor(elemento){
     super(elemento);
   }
 
+  /**
+   * @access public
+   * @description atualiza tela
+   * @param model model
+   * @return string
+   */
   template(model){
     return `
              <table class="table table-hover table-bordered">

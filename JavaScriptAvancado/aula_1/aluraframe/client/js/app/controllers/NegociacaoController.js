@@ -29,6 +29,11 @@ class NegociacaoController{
     this._init();
   }
 
+  /**
+   * @access private
+   * @description inicializa componentes
+   * @return NegociacaoController this
+   */
   _init(){
     this._negociacaoService
         .lista()
@@ -39,13 +44,19 @@ class NegociacaoController{
           console.log(erro);
           this._mensagem.texto = erro;
         });
+
     setInterval(() => {
       this.importaNegociacoes();
     }, 3000);
+
+    return this;
   }
 
   /**
+   * @access public
+   * @description salva uma negociação no banco
    * @param event
+   * @return NegociacaoController this
    */
   adiciona(event){
     event.preventDefault();
@@ -62,6 +73,11 @@ class NegociacaoController{
     return this;
   }
 
+  /**
+   * @access public
+   * @description apaga negociações do banco
+   * @return NegociacaoController this
+   */
   apaga(){
     this._negociacaoService
         .apaga()
@@ -76,6 +92,11 @@ class NegociacaoController{
     return this;
   }
 
+  /**
+   * @access public
+   * @description importa as negociações do banco
+   * @return NegociacaoController this
+   */
   importaNegociacoes(){
     this._negociacaoService
         .importa(this._listaNegociacoes.negociacoes)
@@ -104,6 +125,7 @@ class NegociacaoController{
   }
 
   /**
+   * @access private
    * @description limpa o formulário
    * @return NegociacaoController this
    */
