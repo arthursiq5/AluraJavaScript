@@ -36,7 +36,6 @@ class ProxyFactory{
                   acao(target);
                 }
                 return Reflect.set(target, prop, value, receiver);
-                // acao(target);
               }
             });
   }
