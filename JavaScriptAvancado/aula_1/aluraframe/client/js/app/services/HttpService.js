@@ -3,33 +3,21 @@
  */
 class HttpService{
 
+  _handleErrors(resposta){
+    if(!resposta.ok)
+      throw new Error(resposta.statusText);
+    return resposta;
+  }
+
   /**
    * @access public
    * @param string url
    * @return Promise
    */
   get(url){
-    return new Promise((resolve, reject) => {
-      let xhr = new XMLHttpRequest();
-      xhr.open('GET', url);
-
-      xhr.onreadystatechange = () => {
-
-        if(xhr.readyState == 4){
-
-          if (xhr.status == 200) {
-
-            resolve(JSON.parse(xhr.responseText));
-
-          }else{
-            reject("Não foi possível obter as negociações da semana retrasada");
-          }
-        }
-
-      };
-
-      xhr.send();
-    });
+    return fetch(url)
+             .then(resposta => this._handleErrors(resposta))
+             .then(resposta => resposta.json());
   }
 
   /**
