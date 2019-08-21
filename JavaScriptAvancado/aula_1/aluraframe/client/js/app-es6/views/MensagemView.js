@@ -1,7 +1,8 @@
+import {View} from './View';
 /**
  * @namespace app/view/MensagemView
  */
-class MensagemView extends View{
+export class MensagemView extends View{
 
   /**
    * @constructs

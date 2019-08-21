@@ -1,7 +1,7 @@
 /**
  * @namespace app/services/HttpService
  */
-class HttpService{
+export class HttpService{
 
   _handleErrors(resposta){
     if(!resposta.ok)

@@ -13,7 +13,7 @@
 
     <div id="mensagemView"></div>
 
-    <form class="form" onsubmit="negociacaoController.adiciona(event);">
+    <form class="form">
 
         <div class="form-group">
             <label for="data">Data</label>
@@ -34,7 +34,7 @@
     </form>
 
     <div class="text-center">
-        <button onclick="negociacaoController.apaga();" class="btn btn-primary text-center" type="button">
+        <button id="apaga" class="btn btn-primary text-center" type="button">
             Apagar
         </button>
     </div>
@@ -42,34 +42,14 @@
     <br/>
 
     <div id="negociacoesView"></div>
-    <script type="text/javascript" src="./js/polyfill/es6.js"></script>
-    <script type="text/javascript" src="./js/polyfill/fetch/fetch.js"></script>
 
-    <script type="text/javascript" src="./js/app/models/Negociacao.js"></script>
-    <script type="text/javascript" src="./js/app/models/ListaNegociacoes.js"></script>
-    <script type="text/javascript" src="./js/app/models/Mensagem.js"></script>
-
-    <script type="text/javascript" src="./js/app/dao/NegociacaoDao.js"></script>
-
-    <script type="text/javascript" src="./js/app/helpers/Bind.js"></script>
-    <script type="text/javascript" src="./js/app/helpers/DateHelper.js"></script>
-    <script type="text/javascript" src="./js/app/helpers/ExpressaoRegularHelper.js"></script>
-
-    <script type="text/javascript" src="./js/app/factories/NegociacaoFactory.js"></script>
-
-    <script type="text/javascript" src="./js/app/views/View.js"></script>
-    <script type="text/javascript" src="./js/app/views/NegociacoesView.js"></script>
-    <script type="text/javascript" src="./js/app/views/MensagemView.js"></script>
-
-    <script type="text/javascript" src="./js/app/controllers/NegociacaoController.js"></script>
-
-    <script type="text/javascript" src="./js/app/services/ProxyFactory.js"></script>
-    <script type="text/javascript" src="./js/app/services/HttpService.js"></script>
-    <script type="text/javascript" src="./js/app/services/NegociacaoService.js"></script>
-    <script type="text/javascript" src="./js/app/services/ConnectionFactory.js"></script>
+    <script type="text/javascript" src="./node_modules/systemjs/dist/system.js"></script>
 
     <script type="text/javascript">
-      var negociacaoController = new NegociacaoController();
+      System.defaultJSExtensions = true;
+      System.import('js/app/boot').catch(function(erro){
+        console.log(erro);
+      });
     </script>
 
     <noscript>

@@ -1,7 +1,7 @@
 /**
  * @namespace app/view/View
  */
-class View{
+export class View{
 
   /**
    * @constructs

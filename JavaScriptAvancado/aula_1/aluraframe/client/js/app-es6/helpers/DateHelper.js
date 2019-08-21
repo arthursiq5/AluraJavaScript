@@ -2,7 +2,7 @@
  * @description helper da classe Date
  * @namespace app/helpers/DateHelper
  */
-class DateHelper{
+export class DateHelper{
   /**
    * @throws Error DateHelper não pode ser instanciado
    * @constructs

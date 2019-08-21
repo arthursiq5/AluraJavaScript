@@ -1,7 +1,8 @@
+import {Negociacao} from '../models/Negociacao';
 /**
  * @namespace app/dao/NegociacaoDao
  */
-class NegociacaoDao{
+export class NegociacaoDao{
 
   /**
    * @constructs

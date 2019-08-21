@@ -1,7 +1,21 @@
+import {Bind} from '../helpers/Bind';
+import {DateHelper} from '../helpers/DateHelper';
+
+import {Conta} from '../models/Conta';
+import {Mensagem} from '../models/Mensagem';
+import {Negociacao} from '../models/Negociacao';
+import {ListaNegociacoes} from '../models/ListaNegociacoes';
+
+import {MensagemView} from '../views/MensagemView';
+import {NegociacoesView} from '../views/NegociacoesView';
+
+import {NegociacaoService} from '../services/NegociacaoService';
+
+import {NegociacaoFactory} from '../factories/NegociacaoFactory';
 /**
  * @namespace app/controllers/NegociacaoController
  */
-class NegociacaoController{
+export class NegociacaoController{
 
   /**
    * @constructs

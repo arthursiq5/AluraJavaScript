@@ -1,3 +1,4 @@
+import {Negociacao} from '../models/Negociacao';
 /**
  * @namespace app/Models/NegociacaoFactory
  */

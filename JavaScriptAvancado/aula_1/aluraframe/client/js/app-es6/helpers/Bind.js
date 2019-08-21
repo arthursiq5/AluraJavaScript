@@ -1,7 +1,8 @@
+import {ProxyFactory} from '../services/ProxyFactory';
 /**
  * @namespace app/helpers/Bind
  */
-class Bind{
+export class Bind{
 
   /**
    * @constructs

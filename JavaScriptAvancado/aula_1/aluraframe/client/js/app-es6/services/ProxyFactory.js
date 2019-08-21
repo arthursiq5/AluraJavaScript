@@ -1,7 +1,7 @@
 /**
  * @namespace app/services/ProxyFactory
  */
-class ProxyFactory{
+export class ProxyFactory{
 
   /**
    * @access public

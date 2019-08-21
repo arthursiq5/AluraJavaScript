@@ -1,7 +1,7 @@
 /**
  * @namespace app/models/Mensagem
  */
-class Mensagem{
+export class Mensagem{
   constructor(texto){
     this._texto = texto || '';
   }

@@ -1,7 +1,7 @@
 /**
  * @namespace app/models/ListaNegociacoes
  */
-class ListaNegociacoes{
+export class ListaNegociacoes{
 
   constructor(){
     this._negociacoes = [];

@@ -1,7 +1,7 @@
 /**
- * @namespace app/
+ * @namespace app/models/Negociacao
  */
-class Negociacao{
+export class Negociacao{
 
   /**
    * @constructs

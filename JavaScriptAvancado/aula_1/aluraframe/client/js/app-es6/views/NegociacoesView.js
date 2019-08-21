@@ -1,7 +1,9 @@
+import {View} from './View';
+import {DateHelper} from '../helpers/DateHelper';
 /**
  * @namespace app/view/NegociacoesView
  */
-class NegociacoesView extends View{
+export class NegociacoesView extends View{
 
   /**
    * @constructs
