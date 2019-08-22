@@ -44,4 +44,19 @@ export class ListaNegociacoes{
           0.0
         );
   }
+
+  /**
+   * @access public
+   * @description ordena a partir de um critério
+   * @param Function criterio
+   */
+  ordena(criterio) {
+      this._negociacoes.sort(criterio);
+      return this;
+  }
+
+  inverteOrdem() {
+      this._negociacoes.reverse();
+      return this;
+  }
 }

@@ -15,7 +15,7 @@ import {NegociacaoFactory} from '../factories/NegociacaoFactory';
 /**
  * @namespace app/controllers/NegociacaoController
  */
-export class NegociacaoController{
+class NegociacaoController{
 
   /**
    * @constructs
@@ -31,7 +31,7 @@ export class NegociacaoController{
     this._listaNegociacoes = new Bind(
                                new ListaNegociacoes(),
                                new NegociacoesView($("#negociacoesView")),
-                               'adiciona', 'esvazia'
+                               'adiciona', 'esvazia', 'ordena', 'inverteOrdem'
                              );
 
     this._mensagem = new Bind(
@@ -39,6 +39,8 @@ export class NegociacaoController{
                       new MensagemView($("#mensagemView")),
                       'texto'
                      );
+
+    this._ordemAtual = '';
     this._negociacaoService = new NegociacaoService();
     this._init();
   }
@@ -55,7 +57,6 @@ export class NegociacaoController{
                negociacoes.forEach(negociacao =>
                  this._listaNegociacoes.adiciona(negociacao)))
         .catch(erro => {
-          console.log(erro);
           this._mensagem.texto = erro;
         });
 
@@ -81,6 +82,7 @@ export class NegociacaoController{
         .then((mensagem) => {
           this._listaNegociacoes.adiciona(negociacao);
           this._mensagem.texto = mensagem;
+          this._limpaFormulario();
         })
         .catch(erro => this._mensagem.texto = erro);
 
@@ -125,6 +127,23 @@ export class NegociacaoController{
   }
 
   /**
+   * @access public
+   * @param String coluna
+   * @description ordena as colunas da lista
+   * @return this
+   */
+  ordena(coluna) {
+
+      if(this._ordemAtual == coluna) {
+          this._listaNegociacoes.inverteOrdem();
+      } else {
+          this._listaNegociacoes.ordena((p, s) => p[coluna] - s[coluna]);
+      }
+      this._ordemAtual = coluna;
+      return this;
+  }
+
+  /**
    * @description cria uma negociação baseada na NegociacaoFactory
    * @return Negociacao
    */
@@ -152,4 +171,10 @@ export class NegociacaoController{
 
     return this;
   }
+}
+
+let negociacaoController = new NegociacaoController();
+
+export function currentInstance(){
+  return negociacaoController;
 }
