@@ -1,5 +1,5 @@
 /**
- * @namespace app/services/ConnectionFactory
+ * @namespace app/factories/ConnectionFactory
  */
 const stores = ['negociacoes'];
 const version = 1;
@@ -72,4 +72,3 @@ export class ConnectionFactory{
     });
   }
 }
- 

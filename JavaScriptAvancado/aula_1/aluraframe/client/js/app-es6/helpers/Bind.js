@@ -1,4 +1,4 @@
-import {ProxyFactory} from '../services/ProxyFactory';
+import {ProxyFactory} from '../factories/ProxyFactory';
 /**
  * @namespace app/helpers/Bind
  */

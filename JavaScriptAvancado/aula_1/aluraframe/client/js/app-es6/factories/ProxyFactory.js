@@ -1,5 +1,5 @@
 /**
- * @namespace app/services/ProxyFactory
+ * @namespace app/factories/ProxyFactory
  */
 export class ProxyFactory{
 

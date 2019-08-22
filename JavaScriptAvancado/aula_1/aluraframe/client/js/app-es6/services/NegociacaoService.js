@@ -1,7 +1,7 @@
 import {HttpService} from './HttpService';
 import {Negociacao} from '../models/Negociacao';
 import {NegociacaoDao} from '../dao/NegociacaoDao';
-import {ConnectionFactory} from './ConnectionFactory';
+import {ConnectionFactory} from '../factories/ConnectionFactory';
 /**
  * @namespace app/services/NegociacaoService
  */
