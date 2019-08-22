@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 LOCAL=$(pwd)
-JAVASCRIPT_AVANCADO_PATH="$LOCAL/JavaScriptAvancado/aula_1/aluraframe/"
-CLIENT_PATH="$JAVASCRIPT_AVANCADO_PATH/client"
-SERVER_PATH="$JAVASCRIPT_AVANCADO_PATH/server"
+
+CLIENT_PATH="$LOCAL/JavaScriptAvancado/client"
+SERVER_PATH="$LOCAL/JavaScriptAvancado/server"
 
 git submodule init
 git submodule update
