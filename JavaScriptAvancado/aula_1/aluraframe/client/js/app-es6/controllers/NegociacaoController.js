@@ -10,8 +10,6 @@ import {MensagemView} from '../views/MensagemView';
 import {NegociacoesView} from '../views/NegociacoesView';
 
 import {NegociacaoService} from '../services/NegociacaoService';
-
-import {NegociacaoFactory} from '../factories/NegociacaoFactory';
 /**
  * @namespace app/controllers/NegociacaoController
  */
