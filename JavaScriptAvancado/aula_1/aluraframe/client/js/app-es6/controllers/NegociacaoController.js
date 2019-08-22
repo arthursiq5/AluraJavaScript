@@ -148,13 +148,13 @@ class NegociacaoController{
    * @return Negociacao
    */
   _criaNegociacao(){
-    let negociacaoFactory = new NegociacaoFactory();
+    let negociacao = new Negociacao(
+      DateHelper.textoParaData(this._inputData.value),
+      parseFloat(this._inputQuantidade.value),
+      parseInt(this._inputValor.value)
+    );
 
-    negociacaoFactory.data       = DateHelper.textoParaData(this._inputData.value);
-    negociacaoFactory.valor      = parseInt(this._inputValor.value);
-    negociacaoFactory.quantidade = parseFloat(this._inputQuantidade.value);
-
-    return negociacaoFactory.negociacao;
+    return negociacao;
   }
 
   /**
