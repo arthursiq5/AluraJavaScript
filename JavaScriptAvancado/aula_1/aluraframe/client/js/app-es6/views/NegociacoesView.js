@@ -59,7 +59,7 @@ export class NegociacoesView extends View{
                  <tfoot>
                   <td colspan=\"3\"></td>
                   <td>
-                    ${model.volumeTotal()}
+                    ${model.volumeTotal}
                   </td>
                  </tfoot>
              </table>

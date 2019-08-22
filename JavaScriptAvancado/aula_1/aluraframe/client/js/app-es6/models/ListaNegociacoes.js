@@ -38,7 +38,7 @@ export class ListaNegociacoes{
    * @access public
    * @return float volumeTotal
    */
-  volumeTotal(){
+   get volumeTotal(){
     return this._negociacoes.reduce(
         (total, negociacao) => total + negociacao.volume,
           0.0
